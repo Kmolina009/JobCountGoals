@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Job Pacer - JobGoals</title>
+    <script src="https://kit.fontawesome.com/96a29e4f94.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div><h1>Job Count to goals!!</h1></div>
+    <header>
+        <i class="fas fa-briefcase"></i>
+        <h1>Job Goals</h1>
+        <i class="fas fa-briefcase"></i>
+    </header>
+    
     <!-- hours to get x amount of  jobs-->
     <!-- number of jobs to complete(criteria to meet) -->
-    <form >
-        <input type="text" name="Job Count" id="jobCnt" placeholder="Job Goal" value = "1">
-        <input type="text" name="Number of hours" id="hours" placeholder="Number of Hours" value="2">
-        <input type="button" value="submit" id="submitBtn">
-    </form>
+    <div class="container">
+        <form >
+            <h3>Enter Count and Time</h3>
+            <input type="text" name="Job Count" id="jobCnt" placeholder="Job Count" >
+            <input type="text" name="Number of hours" id="hours" placeholder="Number of Hours">
+            <input type="button" value="submit" id="submitBtn">
+        </form>
+        <hr />
+        <div id="results"></div>
+    </div>
     <!--  -->
+
 </body>
 <script src="./script.js"></script>
 </html>
