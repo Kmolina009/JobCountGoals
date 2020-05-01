@@ -1,16 +1,15 @@
 // *************************
-const form = document.querySelector('form')
+const form = document.querySelector('form');
 const jobNumber = document.querySelector('#jobCnt');
 const hoursNumber = document.querySelector('#hours');
-const submitBtn = document.querySelector('#submitBtn')  
-const results = document.querySelector('#results')
+const submitBtn = document.querySelector('#submitBtn');
+const results = document.querySelector('#results');
 //**********created elements ******************
 const errorMsg = document.createElement('div');
 let mainResultMsg = document.createElement('div');
 
-results.appendChild(mainResultMsg)
-// form.appendChild('div');
-//Main Result
+//Main result Output
+results.appendChild(mainResultMsg);
 
 //List of sub result
 
@@ -18,23 +17,22 @@ results.appendChild(mainResultMsg)
 
 function perTime(e){
     e.preventDefault()
+    mainResultMsg.innerText = '';
     // let perHour = jobNumber.value / hoursNumber.value
     let jobs = Number(jobNumber.value)
     let hours = Number(hoursNumber.value);
-//error is thrown here
-    //Error handling different inputs, NaN or no input
-    if( Number.isNaN(jobs) || Number.isNaN(hours)){
-        e.preventDefault()
-        //send error message under form components div -> h3
-        wrongInputType();
-        
-    } else {
+    let formEval = (jobs && hours);
+if(formEval === 0 || isNaN(formEval)){
+    // e.preventDefault();
+    userError(formEval);
+} else {
 
     let result = jobs/hours;
     //
 
-    let hoursPerJobMsg =`Evenly speaking, this is ${result} `;
+    let hoursPerJobMsg =`try to get ${result.toFixed(1)} per hour.`;
     let mainOutput = document.createTextNode(hoursPerJobMsg);
+    // mainOutput.document.style.color = 'red';
     return mainResultMsg.append(mainOutput);
     //TODO If there is a  new input, replace old out put with new input
     }
@@ -52,21 +50,42 @@ function perTime(e){
     //store in "other results"
     //TextContent 
     
-}
-function wrongInputType(){
-    let inputError = document.createTextNode("I'm Sorry, but I can only take numbers");
-    errorMsg.append(inputError) 
-    results.appendChild(errorMsg)
-    //set timer till disappears
+};
 
-}
+// Error Msgs
+function userError(err){
+    let msg = ''
+    if(err === 0){
+        msg = 'but one of these input\'s is a tad too small... :(';
+    }else if(isNaN(err)){
+        msg ='but I can only take numbers.';   
+    }
+    let inputError = document.createTextNode(`I'm Sorry, ${msg}`);
+    errorMsg.append(inputError);
+//TODO style output letter color to be "red"
+    results.id = 'error';
+    errorMsg.style.color = "red"
+    results.append(errorMsg);    
+//no duplicates
 
+    if(errorMsg.innerText != ''){
+        setTimeout(clearTimeOut,5000)
+    }  
+};
 
+//get rid of error message, switch id back to results
 function clearTimeOut(){
+    // console.log('tick tock')  
+    errorMsg.innerText = '';  
+    error.id = 'results'
+};
 
-}
 //****************************
 submitBtn.addEventListener('click', perTime)
+//autofocus inputs to submit btn once both inputs are filled after half or 
+//third a second
+
+}
 //****************************
 //****
 
