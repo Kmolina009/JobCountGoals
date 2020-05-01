@@ -126,11 +126,20 @@ form input{
     padding: 3vh;
     background-color: white;
     /* margin-top: 19px; */
-    width: 45vw;
     height: 30vh;
     border-radius: var(--smooth-corners1);
 }
-
+#error{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vh;
+    background-color: white;
+    /* margin-top: 19px; */
+    height: 30vh;
+    border-radius: var(--smooth-corners1);
+    color: red;
+}
 
 
 /* CLasses */
@@ -141,6 +150,8 @@ form input{
     background-color: white;
     border-radius: var(--smooth-corners1);
     margin-top: 5vh;
+    height: 50vh;
+    width: auto;
 }
 .container hr{
     border: 0;

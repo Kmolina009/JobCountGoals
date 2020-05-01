@@ -24,8 +24,7 @@ function perTime(e){
     let formEval = (jobs && hours);
 if(formEval === 0 || isNaN(formEval)){
     // e.preventDefault();
-    console.log(
-    userError(formEval));
+    userError(formEval);
 } else {
 
     let result = jobs/hours;
